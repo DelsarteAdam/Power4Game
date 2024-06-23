@@ -1,1 +1,27 @@
-@import url(reset.css);/*# sourceMappingURL=style.css.map */
+@import url(reset.css);
+.container {
+  position: relative;
+}
+
+.item {
+  width: 5vw;
+  height: 5vw;
+}
+
+.item1 {
+  background: blue;
+}
+
+.item2 {
+  top: 0.5vw;
+  left: 0.5vw;
+  position: absolute;
+  width: 4vw;
+  height: 4vw;
+  background: red;
+  border-radius: 50%;
+}
+
+.table {
+  display: flex;
+}/*# sourceMappingURL=style.css.map */
