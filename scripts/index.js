@@ -9,6 +9,8 @@ let power4 = document.getElementById("power4");
 let numberColumn = 0;
 let numberRow = 0;
 
+let arrTest = ["item00", "item01", "item02", "item03", "item04", "item05"];
+
 document.getElementById("rowColumnSubmit").addEventListener("click", () => {
   numberColumn = document.getElementById("numberOfColumn").value;
   numberRow = document.getElementById("numberOfRow").value;
@@ -31,3 +33,22 @@ function generatePower4all() {
   power4.innerHTML = `<div class="table">${tableTemp}</div>`;
   console.log(power4.innerHTML);
 }
+
+function cercleDown() {
+  var i = 0;
+  const tempDown = setInterval(() => {
+    if (i < arrTest.length) {
+      console.log(i);
+      document.getElementById(arrTest[i]).style.backgroundColor = "#ffffff";
+      if (i != 0) {
+        document.getElementById(arrTest[i - 1]).style.backgroundColor = "";
+      }
+      i++;
+    } else {
+      console.log("test");
+      clearInterval(tempDown);
+    }
+  }, 1000);
+}
+
+document.getElementById("columnAdd1").addEventListener("click", cercleDown);
