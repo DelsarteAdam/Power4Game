@@ -10,6 +10,7 @@ let numberColumn = 0;
 let numberRow = 0;
 
 let arrTest = ["item00", "item01", "item02", "item03", "item04", "item05"];
+let arrTestPosition = [0, 1, 2, 3, 4, 5];
 
 document.getElementById("rowColumnSubmit").addEventListener("click", () => {
   numberColumn = document.getElementById("numberOfColumn").value;
@@ -34,21 +35,49 @@ function generatePower4all() {
   console.log(power4.innerHTML);
 }
 
-function cercleDown() {
+function cercleDownWhite() {
   var i = 0;
   const tempDown = setInterval(() => {
-    if (i < arrTest.length) {
-      console.log(i);
+    if (arrTestPosition[i] === "x" || arrTestPosition[i] === "o") {
+      arrTestPosition[i - 1] = "x";
+      console.log(arrTestPosition);
+      clearInterval(tempDown);
+    } else if (i < arrTest.length) {
       document.getElementById(arrTest[i]).style.backgroundColor = "#ffffff";
       if (i != 0) {
         document.getElementById(arrTest[i - 1]).style.backgroundColor = "";
       }
       i++;
     } else {
-      console.log("test");
+      arrTestPosition[i - 1] = "x";
+      console.log(arrTestPosition);
       clearInterval(tempDown);
     }
   }, 1000);
 }
 
-document.getElementById("columnAdd1").addEventListener("click", cercleDown);
+function cercleDownBlue() {
+  var i = 0;
+  const tempDown = setInterval(() => {
+    if (arrTestPosition[i] === "x" || arrTestPosition[i] === "o") {
+      arrTestPosition[i - 1] = "o";
+      console.log(arrTestPosition);
+      clearInterval(tempDown);
+    } else if (i < arrTest.length) {
+      document.getElementById(arrTest[i]).style.backgroundColor = "#00ffff";
+      if (i != 0) {
+        document.getElementById(arrTest[i - 1]).style.backgroundColor = "";
+      }
+      i++;
+    } else {
+      arrTestPosition[i - 1] = "o";
+      console.log(arrTestPosition);
+      clearInterval(tempDown);
+    }
+  }, 1000);
+}
+
+document
+  .getElementById("columnAdd1")
+  .addEventListener("click", cercleDownWhite);
+document.getElementById("columnAdd2").addEventListener("click", cercleDownBlue);
