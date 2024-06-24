@@ -10,17 +10,18 @@
 }
 
 .item1 {
-  background: blue;
+  background: #0077b6;
 }
 
 .item2 {
-  top: 0.5vw;
-  left: 0.5vw;
+  top: 0;
+  left: 0;
   position: absolute;
-  width: 4vw;
-  height: 4vw;
-  background: red;
-  border-radius: 50%;
+  width: 5vw;
+  height: 5vw;
+
+  background-image: url(../images/jettonblank.png);
+  background-size: contain;
 }
 
 .table {
