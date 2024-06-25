@@ -1,4 +1,4 @@
-import { arrGameGenerator } from "./modules/arrgenerator.js";
+import { arrGameGenerator, test } from "./modules/arrgenerator.js";
 
 let arrTest = ["item00", "item01", "item02", "item03", "item04", "item05"];
 let arrTestPosition = [[0, 1, 2, 3, 4, 5]];
