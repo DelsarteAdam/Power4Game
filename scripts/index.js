@@ -1,18 +1,8 @@
 import { arrGameGenerator } from "./modules/arrgenerator.js";
 
-let item =
-  '<div class="container">' +
-  '<div class="item item1"></div>' +
-  '<div class="item item2"></div>' +
-  "</div>";
-
-let power4 = document.getElementById("power4");
-
-let numberColumn = 0;
-let numberRow = 0;
-
 let arrTest = ["item00", "item01", "item02", "item03", "item04", "item05"];
-let arrTestPosition = [0, 1, 2, 3, 4, 5];
+let arrTestPosition = [[0, 1, 2, 3, 4, 5]];
+let arrStockTest = [];
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -43,44 +33,48 @@ function generatePower4all() {
   arrGameGenerator(numberRow, numberColumn);
 }
 
-function cercleDownWhite() {
+function cercleDownPlayer1() {
   var i = 0;
   const tempDown = setInterval(() => {
-    if (arrTestPosition[i] === "x" || arrTestPosition[i] === "o") {
-      arrTestPosition[i - 1] = "x";
+    if (arrTestPosition[0][i] === "x" || arrTestPosition[0][i] === "o") {
+      arrTestPosition[0][i - 1] = "x";
+      lastPlaycoordinate(i);
       console.log(arrTestPosition);
       clearInterval(tempDown);
     } else if (i < arrTest.length) {
       document.getElementById(arrTest[i]).style.backgroundImage =
-        "url(../images/jetton2.png)";
+        Player1.jetton;
       if (i != 0) {
         document.getElementById(arrTest[i - 1]).style.backgroundImage = "";
       }
       i++;
     } else {
-      arrTestPosition[i - 1] = "x";
+      arrTestPosition[0][i - 1] = "x";
+      lastPlaycoordinate(i);
       console.log(arrTestPosition);
       clearInterval(tempDown);
     }
   }, 200);
 }
 
-function cercleDownBlue() {
+function cercleDownPlayer2() {
   var i = 0;
   const tempDown = setInterval(() => {
-    if (arrTestPosition[i] === "x" || arrTestPosition[i] === "o") {
-      arrTestPosition[i - 1] = "o";
+    if (arrTestPosition[0][i] === "x" || arrTestPosition[0][i] === "o") {
+      arrTestPosition[0][i - 1] = "o";
+      lastPlaycoordinate(i);
       console.log(arrTestPosition);
       clearInterval(tempDown);
     } else if (i < arrTest.length) {
       document.getElementById(arrTest[i]).style.backgroundImage =
-        "url(../images/jetton3.png)";
+        Player2.jetton;
       if (i != 0) {
         document.getElementById(arrTest[i - 1]).style.backgroundImage = "";
       }
       i++;
     } else {
-      arrTestPosition[i - 1] = "o";
+      arrTestPosition[0][i - 1] = "o";
+      lastPlaycoordinate(i);
       console.log(arrTestPosition);
       clearInterval(tempDown);
     }
@@ -89,5 +83,14 @@ function cercleDownBlue() {
 
 document
   .getElementById("columnAdd1")
-  .addEventListener("click", cercleDownWhite);
-document.getElementById("columnAdd2").addEventListener("click", cercleDownBlue);
+  .addEventListener("click", cercleDownPlayer1);
+document
+  .getElementById("columnAdd2")
+  .addEventListener("click", cercleDownPlayer2);
+
+function lastPlaycoordinate(ivalue) {
+  arrStockTest = [];
+  arrStockTest.push("column");
+  arrStockTest.push(ivalue - 1);
+  console.log(arrStockTest);
+}

@@ -1,10 +1,14 @@
 /////////////////////////////////////////////////////////////////////////////////////
 //array game generator
-export let arrGameColumn = [];
-export let arrGameColumnExtra = [];
+let arrGameColumn = [];
+let arrGameColumnExtra = [];
 export let arrGame = [];
+export let arrButtonPlayer1 = [];
+export let arrButtonPlayer2 = [];
+
 //extra column rule for check victory and boundary
-export function columnExtra(rowNumber) {
+
+function columnExtra(rowNumber) {
   for (let i = 0; i < rowNumber; i++) {
     arrGameColumnExtra.push("B");
   }
@@ -14,7 +18,7 @@ export function columnExtra(rowNumber) {
   console.log(arrGameColumnExtra);
 }
 
-export function arrGameGeneratorcolumn(rowNumber) {
+function arrGameGeneratorcolumn(rowNumber) {
   for (let i = 0; i < rowNumber; i++) {
     arrGameColumn.push("");
   }
@@ -36,5 +40,17 @@ export function arrGameGenerator(rowNumber, columnNumber) {
   arrGame.unshift(arrGameColumnExtra);
   arrGame.unshift(arrGameColumnExtra);
   arrGame.unshift(arrGameColumnExtra);
+  arrButtonGenerator(columnNumber);
   console.log(arrGame);
+}
+
+//arr for button
+
+function arrButtonGenerator(columnNumber) {
+  for (let i = 0; i < columnNumber; i++) {
+    arrButtonPlayer1.push(`Button${i}Player1`);
+    arrButtonPlayer2.push(`Button${i}Player2`);
+  }
+  console.log(arrButtonPlayer1);
+  console.log(arrButtonPlayer2);
 }
