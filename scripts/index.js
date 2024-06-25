@@ -34,8 +34,8 @@ function generatePower4all() {
 function generateButton() {
   var tableTemp2 = "";
   for (let i = 0; i < numberColumn; i++) {
-    tableTemp2 += `<div class="topButtonIn" ><button id="${arrButtonPlayer1[i]}">add1</button>
-<button id="${arrButtonPlayer2[i]}">add2</button></div>`;
+    tableTemp2 += `<div class="topButtonIn" ><button id="${arrButtonPlayer1[i]}" name="btnPlayer" >add1</button>
+<button id="${arrButtonPlayer2[i]}" name="btnPlayer">add2</button></div>`;
   }
 
   return tableTemp2;
@@ -102,3 +102,12 @@ function lastPlaycoordinate(ivalue) {
   arrStockTest.push(ivalue - 1);
   console.log(arrStockTest);
 }
+
+/////////////// get id from generated button
+
+const onClick = (event) => {
+  if (event.target.name === "btnPlayer") {
+    console.log(event.target.id);
+  }
+};
+window.addEventListener("click", onClick);
