@@ -24,4 +24,14 @@
 
 .table {
   display: flex;
+}
+
+.topButton {
+  display: flex;
+}
+
+.topButtonIn {
+  display: flex;
+  flex-direction: column;
+  width: 5vw;
 }/*# sourceMappingURL=style.css.map */

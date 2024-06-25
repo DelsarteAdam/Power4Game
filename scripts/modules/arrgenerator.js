@@ -1,10 +1,4 @@
 /////////////////////////////////////////////////////////////////////////////////////
-//array game generator
-let arrGameColumn = [];
-let arrGameColumnExtra = [];
-export let arrGame = [];
-export let arrButtonPlayer1 = [];
-export let arrButtonPlayer2 = [];
 
 //extra column rule for check victory and boundary
 

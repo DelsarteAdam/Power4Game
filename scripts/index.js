@@ -1,4 +1,4 @@
-import { arrGameGenerator, test } from "./modules/arrgenerator.js";
+import { arrGameGenerator } from "./modules/arrgenerator.js";
 
 let arrTest = ["item00", "item01", "item02", "item03", "item04", "item05"];
 let arrTestPosition = [[0, 1, 2, 3, 4, 5]];
@@ -24,13 +24,21 @@ function generatePower4Column() {
 function generatePower4all() {
   var tableTemp = "";
   for (let i = 0; i < numberColumn; i++) {
-    tableTemp += `<div class="column${i}">${generatePower4Column()}</div>`;
+    tableTemp += `<div id="column${i}">${generatePower4Column()}</div>`;
+  }
+  arrGameGenerator(numberRow, numberColumn);
+  power4.innerHTML = `<div class="topButton" > ${generateButton()}</div><div class="table">${tableTemp}</div>`;
+  console.log(power4.innerHTML);
+}
+
+function generateButton() {
+  var tableTemp2 = "";
+  for (let i = 0; i < numberColumn; i++) {
+    tableTemp2 += `<div class="topButtonIn" ><button id="${arrButtonPlayer1[i]}">add1</button>
+<button id="${arrButtonPlayer2[i]}">add2</button></div>`;
   }
 
-  power4.innerHTML = `<div class="table">${tableTemp}</div>`;
-  console.log(power4.innerHTML);
-
-  arrGameGenerator(numberRow, numberColumn);
+  return tableTemp2;
 }
 
 function cercleDownPlayer1() {

@@ -28,3 +28,10 @@ let Player2 = {
   jetton: "url(../images/jetton3.png)",
   ia: false,
 };
+
+//array game generator
+let arrGameColumn = [];
+let arrGameColumnExtra = [];
+let arrGame = [];
+let arrButtonPlayer1 = [];
+let arrButtonPlayer2 = [];
