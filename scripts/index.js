@@ -1,6 +1,7 @@
 import { arrGameGenerator } from "./modules/arrgenerator.js";
 
 let arrStockTest = [];
+let clickDectect = false;
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -55,19 +56,22 @@ const clickGetId = (event) => {
   if (event.target.name === "btnPlayer1") {
     var columnSelect = parseInt(event.target.id.slice(-1));
     //columnSelect += 3;
+
     console.log(columnSelect);
     console.log(arrGame);
+    console.log(arrGameColumn);
+    console.log(arrGameColumnExtra);
     cercleDownPlayer1(columnSelect);
   }
   if (event.target.name === "btnPlayer2") {
     var columnSelect = parseInt(event.target.id.slice(-1));
     //columnSelect += 3;
+
     console.log("ici");
     console.log(columnSelect);
-    cercleDownPlayer2(columnSelect);
+    //cercleDownPlayer2(columnSelect);
   }
 };
-window.addEventListener("click", clickGetId);
 
 /////////cercle down
 
@@ -83,12 +87,12 @@ function cercleDownPlayer1(columnSelect) {
       arrGame[columnSelect][i] === "o" ||
       arrGame[columnSelect][i] === "B"
     ) {
-      i--;
-      arrGame[columnSelect][i] = "x";
-      i++;
       lastPlaycoordinate(columnSelect, i);
       console.log(arrGame);
       clearInterval(tempDown);
+      i--;
+      arrGame[columnSelect][i] = "x";
+      i++;
     } else if (i < arrZonecolumnId[0].length) {
       document.getElementById(
         arrZonecolumnId[columnSelect - 3][i]
@@ -100,12 +104,12 @@ function cercleDownPlayer1(columnSelect) {
       }
       i++;
     } else {
-      i--;
-      arrGame[columnSelect][i] = "x";
-      i++;
       lastPlaycoordinate(columnSelect, i);
       console.log(arrGame);
       clearInterval(tempDown);
+      i--;
+      arrGame[columnSelect][i] = "x";
+      i++;
     }
   }, 200);
 }
@@ -139,3 +143,5 @@ function cercleDownPlayer2(columnSelect) {
     }
   }, 200);
 }
+
+window.addEventListener("click", clickGetId);
