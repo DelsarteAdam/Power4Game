@@ -23,6 +23,7 @@ function arrGameGeneratorcolumn(rowNumber) {
 }
 
 export function arrGameGenerator(rowNumber, columnNumber) {
+  arrGameColumn = [];
   arrZoneGenerator(rowNumber, columnNumber);
   columnExtra(rowNumber);
   arrGameGeneratorcolumn(rowNumber);
@@ -35,6 +36,8 @@ export function arrGameGenerator(rowNumber, columnNumber) {
   arrGame.unshift(arrGameColumnExtra);
   arrGame.unshift(arrGameColumnExtra);
   arrGame.unshift(arrGameColumnExtra);
+  console.log(arrGame);
+
   arrButtonGenerator(columnNumber);
   console.log(arrGame);
 }
