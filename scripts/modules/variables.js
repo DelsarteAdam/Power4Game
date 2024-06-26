@@ -35,3 +35,4 @@ let arrGameColumnExtra = [];
 let arrGame = [];
 let arrButtonPlayer1 = [];
 let arrButtonPlayer2 = [];
+let arrZonecolumnId = [];

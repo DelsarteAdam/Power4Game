@@ -23,6 +23,7 @@ function arrGameGeneratorcolumn(rowNumber) {
 }
 
 export function arrGameGenerator(rowNumber, columnNumber) {
+  arrZoneGenerator(rowNumber, columnNumber);
   columnExtra(rowNumber);
   arrGameGeneratorcolumn(rowNumber);
   for (let i = 0; i < columnNumber; i++) {
@@ -42,9 +43,25 @@ export function arrGameGenerator(rowNumber, columnNumber) {
 
 function arrButtonGenerator(columnNumber) {
   for (let i = 0; i < columnNumber; i++) {
-    arrButtonPlayer1.push(`Button${i}Player1`);
-    arrButtonPlayer2.push(`Button${i}Player2`);
+    arrButtonPlayer1.push(`Button${i}`);
+    arrButtonPlayer2.push(`Button${i}`);
   }
   console.log(arrButtonPlayer1);
   console.log(arrButtonPlayer2);
+}
+
+function arrZoneGenerator(columnNumber, rowNumber) {
+  console.log(rowNumber);
+  for (let a = 0; a < columnNumber; a++) {
+    arrZonecolumnId.push(arrZoneGeneratorRow(a, rowNumber));
+  }
+  console.log(arrZonecolumnId);
+}
+
+function arrZoneGeneratorRow(columnID, rowNumber) {
+  var tempArrZone = [];
+  for (let i = 0; i < rowNumber; i++) {
+    tempArrZone.push(`${columnID}item${i}`);
+  }
+  return tempArrZone;
 }

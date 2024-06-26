@@ -12,10 +12,13 @@ document.getElementById("rowColumnSubmit").addEventListener("click", () => {
   generatePower4all();
 });
 
-function generatePower4Column() {
+function generatePower4Column(numberColumnId) {
   var columnTemp = "";
   for (let i = 0; i < numberRow; i++) {
-    columnTemp += item;
+    columnTemp += `<div class="container"> 
+  <div class="item item1"></div>
+  <div class="item item2" id="${numberColumnId}item${i}"></div> 
+  </div>`;
   }
 
   return columnTemp;
@@ -24,24 +27,24 @@ function generatePower4Column() {
 function generatePower4all() {
   var tableTemp = "";
   for (let i = 0; i < numberColumn; i++) {
-    tableTemp += `<div id="column${i}">${generatePower4Column()}</div>`;
+    tableTemp += `<div id="column${i}">${generatePower4Column(i)}</div>`;
   }
   arrGameGenerator(numberRow, numberColumn);
   power4.innerHTML = `<div class="topButton" > ${generateButton()}</div><div class="table">${tableTemp}</div>`;
-  console.log(power4.innerHTML);
+  //console.log(power4.innerHTML);
 }
 
 function generateButton() {
   var tableTemp2 = "";
   for (let i = 0; i < numberColumn; i++) {
-    tableTemp2 += `<div class="topButtonIn" ><button id="${arrButtonPlayer1[i]}" name="btnPlayer" >add1</button>
-<button id="${arrButtonPlayer2[i]}" name="btnPlayer">add2</button></div>`;
+    tableTemp2 += `<div class="topButtonIn" ><button id="${arrButtonPlayer1[i]}" name="btnPlayer1" >add1</button>
+<button id="${arrButtonPlayer2[i]}" name="btnPlayer2">add2</button></div>`;
   }
 
   return tableTemp2;
 }
 
-function cercleDownPlayer1() {
+function cercleDownPlayer1temp() {
   var i = 0;
   const tempDown = setInterval(() => {
     if (arrTestPosition[0][i] === "x" || arrTestPosition[0][i] === "o") {
@@ -65,7 +68,7 @@ function cercleDownPlayer1() {
   }, 200);
 }
 
-function cercleDownPlayer2() {
+function cercleDownPlayer2temp() {
   var i = 0;
   const tempDown = setInterval(() => {
     if (arrTestPosition[0][i] === "x" || arrTestPosition[0][i] === "o") {
@@ -91,23 +94,91 @@ function cercleDownPlayer2() {
 
 document
   .getElementById("columnAdd1")
-  .addEventListener("click", cercleDownPlayer1);
+  .addEventListener("click", cercleDownPlayer1temp);
 document
   .getElementById("columnAdd2")
-  .addEventListener("click", cercleDownPlayer2);
+  .addEventListener("click", cercleDownPlayer2temp);
 
-function lastPlaycoordinate(ivalue) {
+function lastPlaycoordinate(columnSelect, ivalue) {
   arrStockTest = [];
-  arrStockTest.push("column");
+  arrStockTest.push(columnSelect);
   arrStockTest.push(ivalue - 1);
   console.log(arrStockTest);
 }
 
 /////////////// get id from generated button
 
-const onClick = (event) => {
-  if (event.target.name === "btnPlayer") {
-    console.log(event.target.id);
+const clickGetId = (event) => {
+  if (event.target.name === "btnPlayer1") {
+    var columnSelect = parseInt(event.target.id.slice(-1));
+    columnSelect += 3;
+    console.log(columnSelect);
+    cercleDownPlayer1(columnSelect);
+  }
+  if (event.target.name === "btnPlayer2") {
+    var columnSelect = parseInt(event.target.id.slice(-1));
+    columnSelect += 3;
+    console.log(columnSelect);
+    cercleDownPlayer2(columnSelect);
   }
 };
-window.addEventListener("click", onClick);
+window.addEventListener("click", clickGetId);
+
+/////////cercle down
+
+function cercleDownPlayer1(columnSelect) {
+  var i = 0;
+  const tempDown = setInterval(() => {
+    if (
+      arrGame[columnSelect][i] === "x" ||
+      arrGame[columnSelect][i] === "o" ||
+      arrGame[columnSelect][i] === "B"
+    ) {
+      arrGame[columnSelect][i - 1] = "x";
+      lastPlaycoordinate(columnSelect, i);
+      console.log(arrGame);
+      clearInterval(tempDown);
+    } else if (i < arrTest.length) {
+      document.getElementById(arrZonecolumnId[i]).style.backgroundImage =
+        Player1.jetton;
+      if (i != 0) {
+        document.getElementById(arrZonecolumnId[i - 1]).style.backgroundImage =
+          "";
+      }
+      i++;
+    } else {
+      arrGame[0][i - 1] = "x";
+      lastPlaycoordinate(columnSelect, i);
+      console.log(arrGame);
+      clearInterval(tempDown);
+    }
+  }, 200);
+}
+function cercleDownPlayer2(columnSelect) {
+  var i = 0;
+  const tempDown = setInterval(() => {
+    if (
+      arrGame[columnSelect][i] === "x" ||
+      arrGame[columnSelect][i] === "o" ||
+      arrGame[columnSelect][i] === "B"
+    ) {
+      arrGame[columnSelect][i - 1] = "o";
+      lastPlaycoordinate(columnSelect, i);
+      console.log(arrGame);
+      clearInterval(tempDown);
+    } else if (i < arrTest.length) {
+      document.getElementById(arrZonecolumnId[i]).style.backgroundImage =
+        Player2.jetton;
+      if (i != 0) {
+        document.getElementById(arrZonecolumnId[i - 1]).style.backgroundImage =
+          "";
+      }
+      i++;
+    } else {
+      arrGame[0][i - 1] = "o";
+      lastPlaycoordinate(columnSelect, i);
+      console.log(arrGame);
+      clearInterval(tempDown);
+    }
+  }, 200);
+}
