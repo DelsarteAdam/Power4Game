@@ -2,6 +2,18 @@ import { arrGameGenerator } from "./modules/arrgenerator.js";
 
 let arrStockTest = [];
 let clickDectect = false;
+let arrtest = [
+  ["B", "B", "B", "B", "B", "B", "B"],
+  ["B", "B", "B", "B", "B", "B", "B"],
+  ["B", "B", "B", "B", "B", "B", "B"],
+  ["", "", "", "", "B", "B", "B"],
+  ["", "", "", "", "B", "B", "B"],
+  ["", "", "", "", "B", "B", "B"],
+  ["", "", "", "", "B", "B", "B"],
+  ["B", "B", "B", "B", "B", "B", "B"],
+  ["B", "B", "B", "B", "B", "B", "B"],
+  ["B", "B", "B", "B", "B", "B", "B"],
+];
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -29,6 +41,7 @@ function generatePower4all() {
     tableTemp += `<div id="column${i}">${generatePower4Column(i)}</div>`;
   }
   arrGameGenerator(numberRow, numberColumn);
+
   power4.innerHTML = `<div class="topButton" > ${generateButton()}</div><div class="table">${tableTemp}</div>`;
   //console.log(power4.innerHTML);
 }
@@ -61,7 +74,8 @@ const clickGetId = (event) => {
     console.log(arrGame);
     console.log(arrGameColumn);
     console.log(arrGameColumnExtra);
-    cercleDownPlayer1(columnSelect);
+    arrGame[3][2] = "v";
+    console.log(arrGame);
   }
   if (event.target.name === "btnPlayer2") {
     var columnSelect = parseInt(event.target.id.slice(-1));
@@ -75,44 +89,6 @@ const clickGetId = (event) => {
 
 /////////cercle down
 
-function cercleDownPlayer1(columnSelect) {
-  var i = 0;
-
-  console.log(arrGame[2][2]);
-  columnSelect += 3;
-  console.log(arrGame);
-  const tempDown = setInterval(() => {
-    if (
-      arrGame[columnSelect][i] === "x" ||
-      arrGame[columnSelect][i] === "o" ||
-      arrGame[columnSelect][i] === "B"
-    ) {
-      lastPlaycoordinate(columnSelect, i);
-      console.log(arrGame);
-      clearInterval(tempDown);
-      i--;
-      arrGame[columnSelect][i] = "x";
-      i++;
-    } else if (i < arrZonecolumnId[0].length) {
-      document.getElementById(
-        arrZonecolumnId[columnSelect - 3][i]
-      ).style.backgroundImage = Player1.jetton;
-      if (i != 0) {
-        document.getElementById(
-          arrZonecolumnId[columnSelect - 3][i - 1]
-        ).style.backgroundImage = "";
-      }
-      i++;
-    } else {
-      lastPlaycoordinate(columnSelect, i);
-      console.log(arrGame);
-      clearInterval(tempDown);
-      i--;
-      arrGame[columnSelect][i] = "x";
-      i++;
-    }
-  }, 200);
-}
 function cercleDownPlayer2(columnSelect) {
   var i = 0;
   const tempDown = setInterval(() => {
@@ -142,6 +118,26 @@ function cercleDownPlayer2(columnSelect) {
       clearInterval(tempDown);
     }
   }, 200);
+}
+
+function columntest(columnSelecta, index) {
+  console.log(arrGame[columnSelecta][index]);
+  arrGame[columnSelecta][index] = "z";
+  console.log(arrGame);
+}
+
+document.getElementById("testarr").addEventListener("click", () => {
+  console.log(arrtest);
+
+  arrtest[3][2] = "v";
+
+  console.log(arrtest);
+});
+
+function testpromise() {
+  return new Promise((resolve, reject) => {
+    console.log(arrtest);
+  });
 }
 
 window.addEventListener("click", clickGetId);
