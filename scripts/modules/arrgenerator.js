@@ -40,6 +40,7 @@ export function arrGameGenerator(rowNumber, columnNumber) {
 
   arrButtonGenerator(columnNumber);
   console.log(arrGame);
+  arrToObject(columnNumber);
 }
 
 //arr for button
@@ -68,3 +69,34 @@ function arrZoneGeneratorRow(columnID, rowNumber) {
   }
   return tempArrZone;
 }
+
+/// arr on object
+
+function arrToObject(columnNumber) {
+  arrGameObject = {};
+  arrGameObject.column1 = arrGameColumnExtra;
+  arrGameObject.column2 = arrGameColumnExtra;
+  arrGameObject.column3 = arrGameColumnExtra;
+  for (let i = 0; i < columnNumber; i++) {
+    var index = 0;
+    index = i + 4;
+    console.log(index);
+    columnObjectin(`column${index}`);
+  }
+  var index2 = parseInt(columnNumber);
+  index2 += 4;
+  columnObjectextra(`column${index2}`);
+  index2++;
+  columnObjectextra(`column${index2}`);
+  index2++;
+  columnObjectextra(`column${index2}`);
+  console.log(arrGameObject);
+}
+
+var columnObjectextra = function (propertyName) {
+  return (arrGameObject[propertyName] = arrGameColumnExtra);
+};
+
+var columnObjectin = function (propertyName) {
+  return (arrGameObject[propertyName] = arrGameColumn);
+};
