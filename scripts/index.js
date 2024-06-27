@@ -1,19 +1,6 @@
 import { arrGameGenerator } from "./modules/arrgenerator.js";
 
 let arrStockTest = [];
-let clickDectect = false;
-let arrtest = [
-  ["B", "B", "B", "B", "B", "B", "B"],
-  ["B", "B", "B", "B", "B", "B", "B"],
-  ["B", "B", "B", "B", "B", "B", "B"],
-  ["", "", "", "", "B", "B", "B"],
-  ["", "", "", "", "B", "B", "B"],
-  ["", "", "", "", "B", "B", "B"],
-  ["", "", "", "", "B", "B", "B"],
-  ["B", "B", "B", "B", "B", "B", "B"],
-  ["B", "B", "B", "B", "B", "B", "B"],
-  ["B", "B", "B", "B", "B", "B", "B"],
-];
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -92,6 +79,10 @@ function cercleDownPlayer1(columnSelect) {
     ) {
       arrGame[columnSelect][i - 1] = "x";
       lastPlaycoordinate(columnSelect, i);
+
+      checkhorizontalP1();
+      checkVerticalP1();
+      checkDiagonalP1();
       console.log(arrGame);
       clearInterval(tempDown);
     } else if (i < arrZonecolumnId[0].length) {
@@ -107,6 +98,10 @@ function cercleDownPlayer1(columnSelect) {
     } else {
       arrGame[0][i - 1] = "x";
       lastPlaycoordinate(columnSelect, i);
+
+      checkhorizontalP1();
+      checkVerticalP1();
+      checkDiagonalP1();
       console.log(arrGame);
       clearInterval(tempDown);
     }
@@ -144,3 +139,306 @@ function cercleDownPlayer2(columnSelect) {
 }
 
 window.addEventListener("click", clickGetId);
+
+//////////////////////check victory section
+
+function arrHorizontal() {
+  var x = arrStockTest[0];
+  var y = arrStockTest[1];
+  var arrhorizontaltemp = [];
+
+  arrhorizontaltemp = [
+    arrGame[x - 3][y],
+    arrGame[x - 2][y],
+    arrGame[x - 1][y],
+    arrGame[x][y],
+    arrGame[x + 1][y],
+    arrGame[x + 2][y],
+    arrGame[x + 3][y],
+  ];
+  arrhorizontaltemp = JSON.parse(JSON.stringify(arrhorizontaltemp));
+  console.log(arrhorizontaltemp);
+  return arrhorizontaltemp;
+}
+
+function arrVertical() {
+  var x = arrStockTest[0];
+  var y = arrStockTest[1];
+  var arrVerticaltemp = [];
+
+  arrVerticaltemp = [
+    arrGame[x][y],
+    arrGame[x][y + 1],
+    arrGame[x][y + 2],
+    arrGame[x][y + 3],
+  ];
+
+  arrVerticaltemp = JSON.parse(JSON.stringify(arrVerticaltemp));
+  console.log(arrVerticaltemp);
+  return arrVerticaltemp;
+}
+
+function arrDiagonal1() {
+  var x = arrStockTest[0];
+  var y = arrStockTest[1];
+  var arrDiagonal1temp = [];
+
+  arrDiagonal1temp = [
+    arrGame[x - 3][y - 3],
+    arrGame[x - 2][y - 2],
+    arrGame[x - 1][y - 1],
+    arrGame[x][y],
+    arrGame[x + 1][y + 1],
+    arrGame[x + 2][y + 2],
+    arrGame[x + 3][y + 3],
+  ];
+
+  arrDiagonal1temp = JSON.parse(JSON.stringify(arrDiagonal1temp));
+  console.log("arrDiagonal1temp");
+  console.log(arrDiagonal1temp);
+  return arrDiagonal1temp;
+}
+
+function arrDiagonal2() {
+  var x = arrStockTest[0];
+  var y = arrStockTest[1];
+  var arrDiagonal2temp = [];
+
+  arrDiagonal2temp = [
+    arrGame[x - 3][y + 3],
+    arrGame[x - 2][y + 2],
+    arrGame[x - 1][y + 1],
+    arrGame[x][y],
+    arrGame[x + 1][y - 1],
+    arrGame[x + 2][y - 2],
+    arrGame[x + 3][y - 3],
+  ];
+
+  arrDiagonal2temp = JSON.parse(JSON.stringify(arrDiagonal2temp));
+  console.log("arrDiagonal2temp");
+  console.log(arrDiagonal2temp);
+  return arrDiagonal2temp;
+}
+
+//////check horizontal
+
+function checkhorizontalP1() {
+  var arrtemp = arrHorizontal();
+
+  if (
+    arrtemp[0] === "x" &&
+    arrtemp[1] === "x" &&
+    arrtemp[2] === "x" &&
+    arrtemp[3] === "x"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[1] === "x" &&
+    arrtemp[2] === "x" &&
+    arrtemp[3] === "x" &&
+    arrtemp[4] === "x"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[2] === "x" &&
+    arrtemp[3] === "x" &&
+    arrtemp[4] === "x" &&
+    arrtemp[5] === "x"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[3] === "x" &&
+    arrtemp[4] === "x" &&
+    arrtemp[5] === "x" &&
+    arrtemp[6] === "x"
+  ) {
+    console.log("win P1");
+  }
+}
+
+function checkhorizontalP2() {
+  var arrtemp = arrHorizontal();
+
+  if (
+    arrtemp[0] === "o" &&
+    arrtemp[1] === "o" &&
+    arrtemp[2] === "o" &&
+    arrtemp[3] === "o"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[1] === "o" &&
+    arrtemp[2] === "o" &&
+    arrtemp[3] === "o" &&
+    arrtemp[4] === "o"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[2] === "o" &&
+    arrtemp[3] === "o" &&
+    arrtemp[4] === "o" &&
+    arrtemp[5] === "o"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[3] === "o" &&
+    arrtemp[4] === "o" &&
+    arrtemp[5] === "o" &&
+    arrtemp[6] === "o"
+  ) {
+    console.log("win P2");
+  }
+}
+
+////// check vertical
+
+function checkVerticalP1() {
+  var arrtemp = arrVertical();
+
+  if (
+    arrtemp[0] === "x" &&
+    arrtemp[1] === "x" &&
+    arrtemp[2] === "x" &&
+    arrtemp[3] === "x"
+  ) {
+    console.log("win");
+  }
+}
+
+function checkVerticalP2() {
+  var arrtemp = arrVertical();
+
+  if (
+    arrtemp[0] === "o" &&
+    arrtemp[1] === "o" &&
+    arrtemp[2] === "o" &&
+    arrtemp[3] === "o"
+  ) {
+    console.log("win");
+  }
+}
+
+//////// Check diagonal
+function checkDiagonalP1() {
+  var arrtemp = arrDiagonal1();
+  var arrtemp2 = arrDiagonal2();
+  if (
+    arrtemp[0] === "x" &&
+    arrtemp[1] === "x" &&
+    arrtemp[2] === "x" &&
+    arrtemp[3] === "x"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[1] === "x" &&
+    arrtemp[2] === "x" &&
+    arrtemp[3] === "x" &&
+    arrtemp[4] === "x"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[2] === "x" &&
+    arrtemp[3] === "x" &&
+    arrtemp[4] === "x" &&
+    arrtemp[5] === "x"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[3] === "x" &&
+    arrtemp[4] === "x" &&
+    arrtemp[5] === "x" &&
+    arrtemp[6] === "x"
+  ) {
+    console.log("win P1");
+  } else if (
+    arrtemp2[0] === "x" &&
+    arrtemp2[1] === "x" &&
+    arrtemp2[2] === "x" &&
+    arrtemp2[3] === "x"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp2[1] === "x" &&
+    arrtemp2[2] === "x" &&
+    arrtemp2[3] === "x" &&
+    arrtemp2[4] === "x"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp2[2] === "x" &&
+    arrtemp2[3] === "x" &&
+    arrtemp2[4] === "x" &&
+    arrtemp2[5] === "x"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp2[3] === "x" &&
+    arrtemp2[4] === "x" &&
+    arrtemp2[5] === "x" &&
+    arrtemp2[6] === "x"
+  ) {
+    console.log("win P1");
+  }
+}
+
+function checkDiagonalP2() {
+  var arrtemp = arrDiagonal1();
+  var arrtemp2 = arrDiagonal2();
+  if (
+    arrtemp[0] === "o" &&
+    arrtemp[1] === "o" &&
+    arrtemp[2] === "o" &&
+    arrtemp[3] === "o"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[1] === "o" &&
+    arrtemp[2] === "o" &&
+    arrtemp[3] === "o" &&
+    arrtemp[4] === "o"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[2] === "o" &&
+    arrtemp[3] === "o" &&
+    arrtemp[4] === "o" &&
+    arrtemp[5] === "o"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp[3] === "o" &&
+    arrtemp[4] === "o" &&
+    arrtemp[5] === "o" &&
+    arrtemp[6] === "o"
+  ) {
+    console.log("win P1");
+  } else if (
+    arrtemp2[0] === "o" &&
+    arrtemp2[1] === "o" &&
+    arrtemp2[2] === "o" &&
+    arrtemp2[3] === "o"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp2[1] === "o" &&
+    arrtemp2[2] === "o" &&
+    arrtemp2[3] === "o" &&
+    arrtemp2[4] === "o"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp2[2] === "o" &&
+    arrtemp2[3] === "o" &&
+    arrtemp2[4] === "o" &&
+    arrtemp2[5] === "o"
+  ) {
+    console.log("win");
+  } else if (
+    arrtemp2[3] === "o" &&
+    arrtemp2[4] === "o" &&
+    arrtemp2[5] === "o" &&
+    arrtemp2[6] === "o"
+  ) {
+    console.log("win P1");
+  }
+}
