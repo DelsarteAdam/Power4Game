@@ -74,17 +74,17 @@ function arrZoneGeneratorRow(columnID, rowNumber) {
 
 function arrToObject(columnNumber) {
   arrGameObject = {};
+  arrGameObject.column0 = arrGameColumnExtra;
   arrGameObject.column1 = arrGameColumnExtra;
   arrGameObject.column2 = arrGameColumnExtra;
-  arrGameObject.column3 = arrGameColumnExtra;
   for (let i = 0; i < columnNumber; i++) {
     var index = 0;
-    index = i + 4;
+    index = i + 3;
     console.log(index);
     columnObjectin(`column${index}`);
   }
   var index2 = parseInt(columnNumber);
-  index2 += 4;
+  index2 += 3;
   columnObjectextra(`column${index2}`);
   index2++;
   columnObjectextra(`column${index2}`);
@@ -98,5 +98,19 @@ var columnObjectextra = function (propertyName) {
 };
 
 var columnObjectin = function (propertyName) {
-  return (arrGameObject[propertyName] = arrGameColumn);
+  return (arrGameObject[propertyName] = JSON.parse(
+    JSON.stringify(arrGameColumn)
+  ));
 };
+
+function arrGameGeneratorcolumntestin(rowNumber) {
+  var arrGameColumntestin = [];
+  for (let i = 0; i < rowNumber; i++) {
+    arrGameColumntestin.push("");
+  }
+  arrGameColumntestin.push("B");
+  arrGameColumntestin.push("B");
+  arrGameColumntestin.push("B");
+  console.log(arrGameColumntestin);
+  return;
+}

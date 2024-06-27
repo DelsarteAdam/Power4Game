@@ -75,7 +75,9 @@ const clickGetId = (event) => {
     console.log(arrGameColumn);
     console.log(arrGameColumnExtra);
     arrGame[3][2] = "v";
+    arrGameObject.column4[2] = "test";
     console.log(arrGame);
+    console.log(arrGameObject);
   }
   if (event.target.name === "btnPlayer2") {
     var columnSelect = parseInt(event.target.id.slice(-1));
