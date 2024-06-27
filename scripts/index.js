@@ -1,7 +1,5 @@
 import { arrGameGenerator } from "./modules/arrgenerator.js";
 
-let arrStockTest = [];
-
 /////////////////////////////////////////////////////////////////////////////////////
 
 document.getElementById("rowColumnSubmit").addEventListener("click", () => {
@@ -44,10 +42,10 @@ function generateButton() {
 }
 
 function lastPlaycoordinate(columnSelect, ivalue) {
-  arrStockTest = [];
-  arrStockTest.push(columnSelect);
-  arrStockTest.push(ivalue - 1);
-  console.log(arrStockTest);
+  arrCoord = [];
+  arrCoord.push(columnSelect);
+  arrCoord.push(ivalue - 1);
+  console.log(arrCoord);
 }
 
 /////////////// get id from generated button
@@ -83,7 +81,7 @@ function cercleDownPlayer1(columnSelect) {
       checkhorizontalP1();
       checkVerticalP1();
       checkDiagonalP1();
-      console.log(arrGame);
+
       clearInterval(tempDown);
     } else if (i < arrZonecolumnId[0].length) {
       document.getElementById(
@@ -102,7 +100,7 @@ function cercleDownPlayer1(columnSelect) {
       checkhorizontalP1();
       checkVerticalP1();
       checkDiagonalP1();
-      console.log(arrGame);
+
       clearInterval(tempDown);
     }
   }, 200);
@@ -117,7 +115,10 @@ function cercleDownPlayer2(columnSelect) {
     ) {
       arrGame[columnSelect][i - 1] = "o";
       lastPlaycoordinate(columnSelect, i);
-      console.log(arrGame);
+      checkhorizontalP2();
+      checkVerticalP2();
+      checkDiagonalP2();
+
       clearInterval(tempDown);
     } else if (i < arrZonecolumnId[0].length) {
       document.getElementById(
@@ -132,7 +133,10 @@ function cercleDownPlayer2(columnSelect) {
     } else {
       arrGame[0][i - 1] = "o";
       lastPlaycoordinate(columnSelect, i);
-      console.log(arrGame);
+      checkhorizontalP2();
+      checkVerticalP2();
+      checkDiagonalP2();
+
       clearInterval(tempDown);
     }
   }, 200);
@@ -143,8 +147,8 @@ window.addEventListener("click", clickGetId);
 //////////////////////check victory section
 
 function arrHorizontal() {
-  var x = arrStockTest[0];
-  var y = arrStockTest[1];
+  var x = arrCoord[0];
+  var y = arrCoord[1];
   var arrhorizontaltemp = [];
 
   arrhorizontaltemp = [
@@ -157,13 +161,13 @@ function arrHorizontal() {
     arrGame[x + 3][y],
   ];
   arrhorizontaltemp = JSON.parse(JSON.stringify(arrhorizontaltemp));
-  console.log(arrhorizontaltemp);
+
   return arrhorizontaltemp;
 }
 
 function arrVertical() {
-  var x = arrStockTest[0];
-  var y = arrStockTest[1];
+  var x = arrCoord[0];
+  var y = arrCoord[1];
   var arrVerticaltemp = [];
 
   arrVerticaltemp = [
@@ -174,13 +178,13 @@ function arrVertical() {
   ];
 
   arrVerticaltemp = JSON.parse(JSON.stringify(arrVerticaltemp));
-  console.log(arrVerticaltemp);
+
   return arrVerticaltemp;
 }
 
 function arrDiagonal1() {
-  var x = arrStockTest[0];
-  var y = arrStockTest[1];
+  var x = arrCoord[0];
+  var y = arrCoord[1];
   var arrDiagonal1temp = [];
 
   arrDiagonal1temp = [
@@ -194,14 +198,12 @@ function arrDiagonal1() {
   ];
 
   arrDiagonal1temp = JSON.parse(JSON.stringify(arrDiagonal1temp));
-  console.log("arrDiagonal1temp");
-  console.log(arrDiagonal1temp);
   return arrDiagonal1temp;
 }
 
 function arrDiagonal2() {
-  var x = arrStockTest[0];
-  var y = arrStockTest[1];
+  var x = arrCoord[0];
+  var y = arrCoord[1];
   var arrDiagonal2temp = [];
 
   arrDiagonal2temp = [
@@ -215,8 +217,6 @@ function arrDiagonal2() {
   ];
 
   arrDiagonal2temp = JSON.parse(JSON.stringify(arrDiagonal2temp));
-  console.log("arrDiagonal2temp");
-  console.log(arrDiagonal2temp);
   return arrDiagonal2temp;
 }
 
@@ -231,21 +231,21 @@ function checkhorizontalP1() {
     arrtemp[2] === "x" &&
     arrtemp[3] === "x"
   ) {
-    console.log("win");
+    console.log("win P1");
   } else if (
     arrtemp[1] === "x" &&
     arrtemp[2] === "x" &&
     arrtemp[3] === "x" &&
     arrtemp[4] === "x"
   ) {
-    console.log("win");
+    console.log("win P1");
   } else if (
     arrtemp[2] === "x" &&
     arrtemp[3] === "x" &&
     arrtemp[4] === "x" &&
     arrtemp[5] === "x"
   ) {
-    console.log("win");
+    console.log("win P1");
   } else if (
     arrtemp[3] === "x" &&
     arrtemp[4] === "x" &&
@@ -265,21 +265,21 @@ function checkhorizontalP2() {
     arrtemp[2] === "o" &&
     arrtemp[3] === "o"
   ) {
-    console.log("win");
+    console.log("win P2");
   } else if (
     arrtemp[1] === "o" &&
     arrtemp[2] === "o" &&
     arrtemp[3] === "o" &&
     arrtemp[4] === "o"
   ) {
-    console.log("win");
+    console.log("win P2");
   } else if (
     arrtemp[2] === "o" &&
     arrtemp[3] === "o" &&
     arrtemp[4] === "o" &&
     arrtemp[5] === "o"
   ) {
-    console.log("win");
+    console.log("win P2");
   } else if (
     arrtemp[3] === "o" &&
     arrtemp[4] === "o" &&
@@ -301,7 +301,7 @@ function checkVerticalP1() {
     arrtemp[2] === "x" &&
     arrtemp[3] === "x"
   ) {
-    console.log("win");
+    console.log("win P1");
   }
 }
 
@@ -314,7 +314,7 @@ function checkVerticalP2() {
     arrtemp[2] === "o" &&
     arrtemp[3] === "o"
   ) {
-    console.log("win");
+    console.log("win P2");
   }
 }
 
@@ -328,21 +328,21 @@ function checkDiagonalP1() {
     arrtemp[2] === "x" &&
     arrtemp[3] === "x"
   ) {
-    console.log("win");
+    console.log("win P1");
   } else if (
     arrtemp[1] === "x" &&
     arrtemp[2] === "x" &&
     arrtemp[3] === "x" &&
     arrtemp[4] === "x"
   ) {
-    console.log("win");
+    console.log("win P1");
   } else if (
     arrtemp[2] === "x" &&
     arrtemp[3] === "x" &&
     arrtemp[4] === "x" &&
     arrtemp[5] === "x"
   ) {
-    console.log("win");
+    console.log("win P1");
   } else if (
     arrtemp[3] === "x" &&
     arrtemp[4] === "x" &&
@@ -356,21 +356,21 @@ function checkDiagonalP1() {
     arrtemp2[2] === "x" &&
     arrtemp2[3] === "x"
   ) {
-    console.log("win");
+    console.log("win P1");
   } else if (
     arrtemp2[1] === "x" &&
     arrtemp2[2] === "x" &&
     arrtemp2[3] === "x" &&
     arrtemp2[4] === "x"
   ) {
-    console.log("win");
+    console.log("win P1");
   } else if (
     arrtemp2[2] === "x" &&
     arrtemp2[3] === "x" &&
     arrtemp2[4] === "x" &&
     arrtemp2[5] === "x"
   ) {
-    console.log("win");
+    console.log("win P1");
   } else if (
     arrtemp2[3] === "x" &&
     arrtemp2[4] === "x" &&
@@ -390,55 +390,55 @@ function checkDiagonalP2() {
     arrtemp[2] === "o" &&
     arrtemp[3] === "o"
   ) {
-    console.log("win");
+    console.log("win P2");
   } else if (
     arrtemp[1] === "o" &&
     arrtemp[2] === "o" &&
     arrtemp[3] === "o" &&
     arrtemp[4] === "o"
   ) {
-    console.log("win");
+    console.log("win P2");
   } else if (
     arrtemp[2] === "o" &&
     arrtemp[3] === "o" &&
     arrtemp[4] === "o" &&
     arrtemp[5] === "o"
   ) {
-    console.log("win");
+    console.log("win P2");
   } else if (
     arrtemp[3] === "o" &&
     arrtemp[4] === "o" &&
     arrtemp[5] === "o" &&
     arrtemp[6] === "o"
   ) {
-    console.log("win P1");
+    console.log("win P2");
   } else if (
     arrtemp2[0] === "o" &&
     arrtemp2[1] === "o" &&
     arrtemp2[2] === "o" &&
     arrtemp2[3] === "o"
   ) {
-    console.log("win");
+    console.log("win P2");
   } else if (
     arrtemp2[1] === "o" &&
     arrtemp2[2] === "o" &&
     arrtemp2[3] === "o" &&
     arrtemp2[4] === "o"
   ) {
-    console.log("win");
+    console.log("win P2");
   } else if (
     arrtemp2[2] === "o" &&
     arrtemp2[3] === "o" &&
     arrtemp2[4] === "o" &&
     arrtemp2[5] === "o"
   ) {
-    console.log("win");
+    console.log("win P2");
   } else if (
     arrtemp2[3] === "o" &&
     arrtemp2[4] === "o" &&
     arrtemp2[5] === "o" &&
     arrtemp2[6] === "o"
   ) {
-    console.log("win P1");
+    console.log("win P2");
   }
 }

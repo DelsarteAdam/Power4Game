@@ -37,4 +37,4 @@ let arrButtonPlayer1 = [];
 let arrButtonPlayer2 = [];
 let arrZonecolumnId = [];
 
-let arrGameObject = {};
+let arrCoord = [];
