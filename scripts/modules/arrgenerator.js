@@ -24,11 +24,11 @@ function arrGameGeneratorcolumn(rowNumber) {
 
 export function arrGameGenerator(rowNumber, columnNumber) {
   arrGameColumn = [];
-  arrZoneGenerator(rowNumber, columnNumber);
+  arrZoneGenerator(columnNumber, rowNumber);
   columnExtra(rowNumber);
   arrGameGeneratorcolumn(rowNumber);
   for (let i = 0; i < columnNumber; i++) {
-    arrGame.push(arrGameColumn);
+    arrGame.push(JSON.parse(JSON.stringify(arrGameColumn)));
   }
   arrGame.push(arrGameColumnExtra);
   arrGame.push(arrGameColumnExtra);
@@ -40,7 +40,8 @@ export function arrGameGenerator(rowNumber, columnNumber) {
 
   arrButtonGenerator(columnNumber);
   console.log(arrGame);
-  arrToObject(columnNumber);
+  console.log(arrZonecolumnId);
+  //arrToObject(columnNumber);
 }
 
 //arr for button
@@ -70,47 +71,47 @@ function arrZoneGeneratorRow(columnID, rowNumber) {
   return tempArrZone;
 }
 
-/// arr on object
+// /// arr on object
 
-function arrToObject(columnNumber) {
-  arrGameObject = {};
-  arrGameObject.column0 = arrGameColumnExtra;
-  arrGameObject.column1 = arrGameColumnExtra;
-  arrGameObject.column2 = arrGameColumnExtra;
-  for (let i = 0; i < columnNumber; i++) {
-    var index = 0;
-    index = i + 3;
-    console.log(index);
-    columnObjectin(`column${index}`);
-  }
-  var index2 = parseInt(columnNumber);
-  index2 += 3;
-  columnObjectextra(`column${index2}`);
-  index2++;
-  columnObjectextra(`column${index2}`);
-  index2++;
-  columnObjectextra(`column${index2}`);
-  console.log(arrGameObject);
-}
+// function arrToObject(columnNumber) {
+//   arrGameObject = {};
+//   arrGameObject.column0 = arrGameColumnExtra;
+//   arrGameObject.column1 = arrGameColumnExtra;
+//   arrGameObject.column2 = arrGameColumnExtra;
+//   for (let i = 0; i < columnNumber; i++) {
+//     var index = 0;
+//     index = i + 3;
+//     console.log(index);
+//     columnObjectin(`column${index}`);
+//   }
+//   var index2 = parseInt(columnNumber);
+//   index2 += 3;
+//   columnObjectextra(`column${index2}`);
+//   index2++;
+//   columnObjectextra(`column${index2}`);
+//   index2++;
+//   columnObjectextra(`column${index2}`);
+//   console.log(arrGameObject);
+// }
 
-var columnObjectextra = function (propertyName) {
-  return (arrGameObject[propertyName] = arrGameColumnExtra);
-};
+// var columnObjectextra = function (propertyName) {
+//   return (arrGameObject[propertyName] = arrGameColumnExtra);
+// };
 
-var columnObjectin = function (propertyName) {
-  return (arrGameObject[propertyName] = JSON.parse(
-    JSON.stringify(arrGameColumn)
-  ));
-};
+// var columnObjectin = function (propertyName) {
+//   return (arrGameObject[propertyName] = JSON.parse(
+//     JSON.stringify(arrGameColumn)
+//   ));
+// };
 
-function arrGameGeneratorcolumntestin(rowNumber) {
-  var arrGameColumntestin = [];
-  for (let i = 0; i < rowNumber; i++) {
-    arrGameColumntestin.push("");
-  }
-  arrGameColumntestin.push("B");
-  arrGameColumntestin.push("B");
-  arrGameColumntestin.push("B");
-  console.log(arrGameColumntestin);
-  return;
-}
+// function arrGameGeneratorcolumntestin(rowNumber) {
+//   var arrGameColumntestin = [];
+//   for (let i = 0; i < rowNumber; i++) {
+//     arrGameColumntestin.push("");
+//   }
+//   arrGameColumntestin.push("B");
+//   arrGameColumntestin.push("B");
+//   arrGameColumntestin.push("B");
+//   console.log(arrGameColumntestin);
+//   return;
+// }

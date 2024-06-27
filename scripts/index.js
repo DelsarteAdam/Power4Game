@@ -68,29 +68,50 @@ function lastPlaycoordinate(columnSelect, ivalue) {
 const clickGetId = (event) => {
   if (event.target.name === "btnPlayer1") {
     var columnSelect = parseInt(event.target.id.slice(-1));
-    //columnSelect += 3;
-
-    console.log(columnSelect);
-    console.log(arrGame);
-    console.log(arrGameColumn);
-    console.log(arrGameColumnExtra);
-    arrGame[3][2] = "v";
-    arrGameObject.column4[2] = "test";
-    console.log(arrGame);
-    console.log(arrGameObject);
+    columnSelect += 3;
+    cercleDownPlayer1(columnSelect);
   }
   if (event.target.name === "btnPlayer2") {
     var columnSelect = parseInt(event.target.id.slice(-1));
-    //columnSelect += 3;
+    columnSelect += 3;
 
-    console.log("ici");
-    console.log(columnSelect);
+    cercleDownPlayer2(columnSelect);
     //cercleDownPlayer2(columnSelect);
   }
 };
 
 /////////cercle down
 
+function cercleDownPlayer1(columnSelect) {
+  var i = 0;
+  const tempDown = setInterval(() => {
+    if (
+      arrGame[columnSelect][i] === "x" ||
+      arrGame[columnSelect][i] === "o" ||
+      arrGame[columnSelect][i] === "B"
+    ) {
+      arrGame[columnSelect][i - 1] = "x";
+      lastPlaycoordinate(columnSelect, i);
+      console.log(arrGame);
+      clearInterval(tempDown);
+    } else if (i < arrZonecolumnId[0].length) {
+      document.getElementById(
+        arrZonecolumnId[columnSelect - 3][i]
+      ).style.backgroundImage = Player1.jetton;
+      if (i != 0) {
+        document.getElementById(
+          arrZonecolumnId[columnSelect - 3][i - 1]
+        ).style.backgroundImage = "";
+      }
+      i++;
+    } else {
+      arrGame[0][i - 1] = "x";
+      lastPlaycoordinate(columnSelect, i);
+      console.log(arrGame);
+      clearInterval(tempDown);
+    }
+  }, 200);
+}
 function cercleDownPlayer2(columnSelect) {
   var i = 0;
   const tempDown = setInterval(() => {
@@ -105,11 +126,11 @@ function cercleDownPlayer2(columnSelect) {
       clearInterval(tempDown);
     } else if (i < arrZonecolumnId[0].length) {
       document.getElementById(
-        arrZonecolumnId[columnSelect][i]
+        arrZonecolumnId[columnSelect - 3][i]
       ).style.backgroundImage = Player2.jetton;
       if (i != 0) {
         document.getElementById(
-          arrZonecolumnId[columnSelect][i - 1]
+          arrZonecolumnId[columnSelect - 3][i - 1]
         ).style.backgroundImage = "";
       }
       i++;
@@ -120,26 +141,6 @@ function cercleDownPlayer2(columnSelect) {
       clearInterval(tempDown);
     }
   }, 200);
-}
-
-function columntest(columnSelecta, index) {
-  console.log(arrGame[columnSelecta][index]);
-  arrGame[columnSelecta][index] = "z";
-  console.log(arrGame);
-}
-
-document.getElementById("testarr").addEventListener("click", () => {
-  console.log(arrtest);
-
-  arrtest[3][2] = "v";
-
-  console.log(arrtest);
-});
-
-function testpromise() {
-  return new Promise((resolve, reject) => {
-    console.log(arrtest);
-  });
 }
 
 window.addEventListener("click", clickGetId);
