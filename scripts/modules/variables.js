@@ -38,3 +38,8 @@ let arrButtonPlayer2 = [];
 let arrZonecolumnId = [];
 
 let arrCoord = [];
+
+let player1Play = true;
+let player2Play = false;
+
+let victory = false;

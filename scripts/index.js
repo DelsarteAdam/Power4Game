@@ -34,8 +34,8 @@ function generatePower4all() {
 function generateButton() {
   var tableTemp2 = "";
   for (let i = 0; i < numberColumn; i++) {
-    tableTemp2 += `<div class="topButtonIn" ><button id="${arrButtonPlayer1[i]}" name="btnPlayer1" >add1</button>
-<button id="${arrButtonPlayer2[i]}" name="btnPlayer2">add2</button></div>`;
+    tableTemp2 += `<div class="topButtonIn" ><button class="P1" id="${arrButtonPlayer1[i]}" name="btnPlayer1" ><i class="arr-down"></i></button>
+<button class="P2" id="${arrButtonPlayer2[i]}" name="btnPlayer2"><i class="arr-down"></i></button></div>`;
   }
 
   return tableTemp2;
@@ -59,9 +59,7 @@ const clickGetId = (event) => {
   if (event.target.name === "btnPlayer2") {
     var columnSelect = parseInt(event.target.id.slice(-1));
     columnSelect += 3;
-
     cercleDownPlayer2(columnSelect);
-    //cercleDownPlayer2(columnSelect);
   }
 };
 

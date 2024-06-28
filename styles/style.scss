@@ -37,3 +37,264 @@
   flex-direction: column;
   width: 5vw;
 }
+
+Body {
+  display: flex;
+  background-color: #a8dadc;
+  color: white;
+}
+
+#mainPageLoad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+#mainTitle {
+  font-size: 10rem;
+  margin-top: 40vh;
+  margin-bottom: 5vh;
+  font-family: "Codec cold", sans-serif;
+  color: #fff;
+  background-color: #1d3557;
+  padding: 20px;
+  border-radius: 50px;
+}
+
+#newGame {
+  font-size: 4rem;
+  align-items: center;
+  background-image: linear-gradient(135deg, #e63946 40%, #bb2633);
+  border: 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: "Codec cold", sans-serif;
+  font-weight: 700;
+  height: 10vh;
+  justify-content: center;
+  letter-spacing: 0.4px;
+  line-height: 1;
+  max-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#newGame:active {
+  outline: 0;
+}
+
+#newGame:hover {
+  outline: 0;
+}
+
+#newGame span {
+  transition: all 200ms;
+}
+
+#newGame:hover span {
+  transform: scale(0.9);
+  opacity: 0.75;
+}
+
+#player1Setup {
+  background-color: #e63946;
+  width: 100vw;
+  height: 50vh;
+}
+
+#player2Setup {
+  background-color: #a8dadc;
+  width: 100vw;
+  height: 50vh;
+}
+
+#player1Setup {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+#player1Setup h2 {
+  color: white;
+  font-size: 4rem;
+  margin-top: 10px;
+}
+#player1Setup p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+#player1Setup button {
+  margin-top: 20px;
+  align-items: center;
+  background-image: linear-gradient(135deg, #a8dadc 40%, #79afb1);
+  border: 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: "Codec cold", sans-serif;
+  font-weight: 700;
+
+  justify-content: center;
+  letter-spacing: 0.4px;
+  line-height: 1;
+  max-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#player1Setup button:active {
+  outline: 0;
+}
+
+#player1Setup button:hover {
+  outline: 0;
+}
+
+#player1Setup button span {
+  transition: all 200ms;
+}
+
+#player1Setup button:hover span {
+  transform: scale(0.9);
+  opacity: 0.75;
+}
+
+#player2Setup {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+#player2Setup h2 {
+  color: white;
+  font-size: 4rem;
+  margin-top: 10px;
+}
+#player2Setup p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+#player2Setup button {
+  margin-top: 20px;
+  align-items: center;
+  background-image: linear-gradient(135deg, #e63946 40%, #bb2633);
+  border: 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: "Codec cold", sans-serif;
+  font-weight: 700;
+
+  justify-content: center;
+  letter-spacing: 0.4px;
+  line-height: 1;
+  max-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#player2Setup button:active {
+  outline: 0;
+}
+
+#player2Setup button:hover {
+  outline: 0;
+}
+
+#player2Setup button span {
+  transition: all 200ms;
+}
+
+#player2Setup button:hover span {
+  transform: scale(0.9);
+  opacity: 0.75;
+}
+
+h2 {
+  color: white;
+  font-size: x-large;
+  margin-top: 20px;
+}
+
+#power4 {
+  margin-top: 20px;
+}
+
+.P1 {
+  background-color: #bb2633;
+  border: none;
+  margin: 5%;
+
+  &:hover {
+    transform: translateY(5px);
+    background-color: #26bb4b;
+  }
+}
+
+.P2 {
+  background-color: #2662bb;
+  border: none;
+  margin: 5%;
+
+  &:hover {
+    transform: translateY(5px);
+    background-color: #26bb4b;
+  }
+}
+
+/* RESPONSIVE ARROWS */
+[class^="arr-"] {
+  border: solid currentColor;
+  border-width: 0 0.2em 0.2em 0;
+  display: inline-block;
+  padding: 0.2em;
+}
+.arr-right {
+  transform: rotate(-45deg);
+}
+.arr-left {
+  transform: rotate(135deg);
+}
+.arr-up {
+  transform: rotate(-135deg);
+}
+.arr-down {
+  transform: rotate(45deg);
+}
